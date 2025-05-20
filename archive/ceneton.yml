@@ -1,0 +1,21 @@
+- etag: '"d77745-5046f48835200"'
+  filename: 2014-10-02T11-54-48.zip
+  last_modified: Thu, 02 Oct 2014 11:54:48 GMT
+  last_modified_ts: '2014-10-02T11:54:48+00:00'
+  sha256: 73ee843664e141a41b2933ed57332876cd3429919ccd5c9250ebdece714bab4b
+  size: 14120773
+  url: https://www.let.leidenuniv.nl/Dutch/Ceneton/Ceneton2014.fp7.zip
+- etag: '"f070f4-60b49c3b1ee00"'
+  filename: 2023-11-29T12-35-04.zip
+  last_modified: Wed, 29 Nov 2023 12:35:04 GMT
+  last_modified_ts: '2023-11-29T12:35:04+00:00'
+  sha256: 7f47f93333fbec6ac284ee513f955bd2e096d6ccc8513f6cfffafaa2022e8471
+  size: 15757556
+  url: https://www.let.leidenuniv.nl/Dutch/Ceneton/Ceneton2023.fmp12.zip
+- etag: '"10aa08c-62e5685bbb380"'
+  filename: 2025-02-17T13-30-06.zip
+  last_modified: Mon, 17 Feb 2025 13:30:06 GMT
+  last_modified_ts: '2025-02-17T13:30:06+00:00'
+  sha256: 62259907f731c79e5dc1061446025f3219c6ac520261c1dd051f244545e08128
+  size: 17473676
+  url: https://www.let.leidenuniv.nl/Dutch/Ceneton/Ceneton2025.fmp12.zip
