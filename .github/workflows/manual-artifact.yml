@@ -1,0 +1,42 @@
+name: Create Ceneton SQLite Database
+
+on:
+  workflow_dispatch:
+    inputs:
+      output_filename:
+        description: 'Name of the output file to create'
+        required: true
+        default: 'ceneton.db'
+        type: string
+
+jobs:
+  create-artifact:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install git+https://github.com/kws/ceneton-database-tools
+        
+    - name: Run Python task
+      run: |
+        ct-db create-db \
+           "archive/2025-02-17T13-30-06.xml.bz2" \
+           "sqlite:///${{ github.event.inputs.output_filename }}"
+                      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ceneton-sqlite-database
+        path: ${{ github.event.inputs.output_filename }}
+        retention-days: 90
+      if: success() && hashFiles(github.event.inputs.output_filename) != ''
