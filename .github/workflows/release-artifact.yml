@@ -28,8 +28,9 @@ jobs:
     - name: Generate release filename
       id: filename
       run: |
-        DATE=$(date '+%Y-%m-%d')
-        FILENAME="ceneton-release-${DATE}-${{ github.event.release.tag_name }}.db"
+        # DATE=$(date '+%Y-%m-%d')
+        # FILENAME="ceneton-release-${DATE}-${{ github.event.release.tag_name }}.db"
+        FILENAME="ceneton.db"
         echo "filename=${FILENAME}" >> $GITHUB_OUTPUT
         
     - name: Run Python task for release
@@ -39,16 +40,12 @@ jobs:
           "sqlite:///${{ steps.filename.outputs.filename }}"
           
     - name: Attach file to release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v2
       with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{ steps.filename.outputs.filename }}
-        asset_name: ${{ steps.filename.outputs.filename }}
-        asset_content_type: application/x-sqlite3
+        files: ${{ steps.filename.outputs.filename }}
+        tag_name: ${{ github.event.release.tag_name }}
       if: success()
-      
+        
     - name: Also upload as workflow artifact (backup)
       uses: actions/upload-artifact@v4
       with:
